@@ -9,6 +9,7 @@
         </v-card-text>
       </v-card-actions>
     </div>
+    <!--Modal Redirección a Login - Register -->
     <v-dialog v-model="showDialog" persistent max-width="500px">
       <v-card>
         <v-card-title>PelisFarma</v-card-title>

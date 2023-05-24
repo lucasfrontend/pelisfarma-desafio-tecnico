@@ -9,6 +9,7 @@
           <v-icon large>mdi-account-circle</v-icon>
         </v-avatar>
       </template>
+
       <v-card>
         <v-list>
           <v-list-item router exact> 
@@ -64,6 +65,7 @@
       </v-card>
 
     </v-menu>
+    <!-- Modal Logout -->
     <v-dialog v-model="showDialog" persistent max-width="500px">
       <v-card>
         <v-card-title>Cerrar sesión</v-card-title>

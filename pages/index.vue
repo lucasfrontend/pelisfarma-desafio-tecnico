@@ -88,7 +88,7 @@ export default {
           id: 3,
           rol: 1
         }
-      ],
+      ]
     }
   },
   created () {

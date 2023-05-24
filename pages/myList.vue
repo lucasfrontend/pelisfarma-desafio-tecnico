@@ -41,7 +41,7 @@
         <img :src="bottomLogo" alt="Tabla vacía" style="width: 20%; height: 20%;">
       </nuxt-link>
     </v-col>
-
+    <!--Modal eliminar peli de MyList-->
     <v-dialog v-model="showDialog" persistent max-width="500px">
       <v-card>
         <v-card-title>Eliminar película</v-card-title>

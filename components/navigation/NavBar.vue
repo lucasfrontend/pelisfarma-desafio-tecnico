@@ -41,7 +41,7 @@
         :rules="[required('peli')]"
       -->
 
-      <!-- Menú Registrar usuario/ usuario registrado -->
+      <!-- Menú Registrar usuario/ Login -->
       <div class="d-flex justify-center">
         <UserMenu v-if="$store.state.authentication.isAuthenticated || $store.state.authentication.newUserName" />
         <RegisterMenu v-else  />
