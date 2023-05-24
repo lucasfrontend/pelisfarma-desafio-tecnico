@@ -109,8 +109,6 @@ export default {
         const apiKey = process.env.API_KEY;
         const apiUrl = `?apikey=${apiKey}&s=movie&type=movie&page=1`;
         const response = await this.$axios.get(apiUrl);
-        console.log("res1", response);
-        console.log("res data", response.data);
         if (response.data.Response === 'True') {
           this.movies = response.data.Search;
         } else {

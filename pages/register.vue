@@ -43,7 +43,6 @@ export default {
         const { email, name } = userInfo;
         const response = await loginDummy(email, name);
         if (response.success) {
-          console.log("response.success", response.success);
           this.SET_NEW_USER(name);
           this.$router.push('/');
         } else {
