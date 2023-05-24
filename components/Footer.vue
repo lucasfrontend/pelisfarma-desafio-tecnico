@@ -3,7 +3,7 @@
     <v-container>
         <v-row>
         <v-col cols="12" md="3">
-            <h class="white--text">Nosotros</h>
+            <h4 class="white--text">Nosotros</h4>
             <p class="grey--text text--darken-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laborum nisi deserunt laudantium sit est incidunt quis.</p>
         </v-col>
         <v-col cols="12" md="3">
