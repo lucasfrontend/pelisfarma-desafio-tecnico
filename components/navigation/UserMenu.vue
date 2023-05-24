@@ -94,13 +94,7 @@ export default {
         {
           icon: "mdi-cog-outline",
           title: "Configuración",
-          to: "/notFound1",
-          disabled: true
-        },
-        {
-          icon: "mdi-pencil",
-          title: "Administrar perfiles",
-          to: "/notFound2",
+          to: "/#",
           disabled: true
         }
       ]
