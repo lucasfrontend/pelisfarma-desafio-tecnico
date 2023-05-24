@@ -27,7 +27,7 @@
     >
 
       <template v-slot:item.actions="{ item }">
-        <v-btn small color="error" @click="removePeli(item)">
+        <v-btn small color="error" @click="showDialog = true">
           <v-icon small class="mr-1">mdi-delete</v-icon>
         </v-btn>
       </template>
@@ -41,6 +41,18 @@
         <img :src="bottomLogo" alt="Tabla vacía" style="width: 20%; height: 20%;">
       </nuxt-link>
     </v-col>
+
+    <v-dialog v-model="showDialog" persistent max-width="500px">
+      <v-card>
+        <v-card-title>Eliminar película</v-card-title>
+        <v-card-text>¿Está seguro de que desea eliminar la película de su lista?</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text @click="showDialog = false">Cancelar</v-btn>
+          <v-btn color="primary" text @click="removePeli">Aceptar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
   </v-container>
 </template>
@@ -65,6 +77,7 @@ export default {
       notPeli: "No se encontró película con ese nombre",
       itemsPerPageText: "Cantidad de pelis",
       bottomLogo: require('~/assets/img/bottom.png'),
+      showDialog: false
     };
   },
   computed: {
@@ -101,7 +114,7 @@ export default {
       } else if (this.newUsername) {
         this.REMOVE_PELI_NEW_USER(movie);
       }
-      console.log('Película eliminada:', movie);
+      this.showDialog = false
     },
     formatName(name) {
       if (name) {
