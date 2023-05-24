@@ -44,7 +44,6 @@ export default {
     '@nuxtjs/auth',
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    //'@nuxtjs/firebase'
   ],
 
   /*
