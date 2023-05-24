@@ -170,28 +170,26 @@ export default {
       this.isLiked = !this.isLiked;
     },
     addPeli(movie) {
-      if (this.isAuthenticated) {
+      console.log(movie.Title, "movie 0" )
+      if (this.isAuthenticated && movie.Title !== undefined) {
         this.ADD_PELI_AUTHENTICATED(movie);
-      } else if (this.newUsername) {
-        this.ADD_PELI_NEW_USER(movie);
-      }
-      this.$store.dispatch("snackbar/create", {
+        this.$store.dispatch("snackbar/create", {
         color: "green",
         text: `"${movie.Title}" fue agregada con éxito a tu lista`
       });
+      } else if (this.newUsername && movie.Title !== undefined) {
+        this.ADD_PELI_NEW_USER(movie);
+        this.$store.dispatch("snackbar/create", {
+        color: "green",
+        text: `"${movie.Title}" fue agregada con éxito a tu lista`
+      });
+      } else if (movie.Title == undefined) {
+        this.$store.dispatch("snackbar/create", {
+          color: "red",
+          text: `Error al agregar "${movie.Title}"`
+        });
+      }
     }
   }
 };
 </script>
-<style>
-
-
-.rating {
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-
-.votes {
-  font-size: 14px;
-}
-</style>

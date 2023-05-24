@@ -34,7 +34,6 @@
             @keyup.enter="searchMovie"
             dense
             small
-            :errorMessages="searchErrors"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -49,6 +48,10 @@
       </div>
 
     </v-app-bar>
+
+    <v-flex align-center justify-center v-if="loading">
+      <CustomProgressCircular size='50' color="#5335EC"></CustomProgressCircular>
+    </v-flex>
   </div>
 </template>
   
@@ -57,11 +60,16 @@ import UserMenu from "@/components/navigation/UserMenu";
 import RegisterMenu from "@/components/navigation/RegisterMenu";
 import { mapMutations } from 'vuex';
 import validations from "@/utils/validations";
+import CustomProgressCircular from '~/components/CustomProgressCircular.vue';
 export default {
+  components: {
+    CustomProgressCircular
+  },
   data() {
     return {
       drawer: false,
       searchedMovie: '',
+      loading: false,
       items: [
         {
           icon: "mdi-home",
@@ -83,23 +91,21 @@ export default {
     RegisterMenu,
     UserMenu
   },
-  computed: {
-    searchErrors() {
-      const errors = []
-      if (!this.searchRules[0](this.searchMovie)) {
-        errors.push(this.searchRules[0](this.searchMovie))
-      }
-      return errors
-    },
-  },
   methods: {
     ...mapMutations('search', ['SET_SEARCH_MOVIE', 'RESET_SEARCH_MOVIE']),
     searchMovie() {
       if (this.searchedMovie) {
+        this.loading = true
         this.RESET_SEARCH_MOVIE()
         this.SET_SEARCH_MOVIE(this.searchedMovie);
 
         this.$router.push('/filmResult');
+        this.loading = false
+      } else {
+        this.$store.dispatch("snackbar/create", {
+          color: "red",
+          text: 'Ingrese un título válido'
+        });
       }
     }
   }
