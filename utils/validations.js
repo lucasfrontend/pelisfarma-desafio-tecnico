@@ -11,7 +11,7 @@ let maxLength = (propertyType, maxLength) => {
 }
 
 let emailFormat = () => {
-  let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,24})+$/
+  let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,24})+$/
   return v => v && regex.test(v) || "Debe ingresar un correo válido"
 }
   

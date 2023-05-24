@@ -23,6 +23,8 @@
     "postcss-preset-env": "^6.7.1"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.12.3"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "eslint": "^8.41.0",
+    "eslint-plugin-vue": "^9.14.0"
   }
 }
