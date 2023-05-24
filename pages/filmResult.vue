@@ -39,14 +39,14 @@ export default {
     }
   },
   watch: {
-  '$store.state.search.searchMovie': {
-    immediate: true,
-    handler(newSearchMovie) {
-      this.searchMovie = newSearchMovie;
-      this.getMovie();
+    '$store.state.search.searchMovie': {
+      immediate: true,
+      handler(newSearchMovie) {
+        this.searchMovie = newSearchMovie;
+        this.getMovie();
+      }
     }
-  }
-},
+  },
   methods: {
     ...mapMutations('search', ['RESET_SEARCH_MOVIE']),
     async getMovie() {
@@ -57,7 +57,6 @@ export default {
         const response = await this.$axios.get(apiUrl);
         if (response.data.Response === 'True') {
           this.movies = response.data.Search;
-          this.RESET_SEARCH_MOVIE();
         } else {
           this.$store.dispatch("snackbar/create", {
             color: "red",

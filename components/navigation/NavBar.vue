@@ -26,19 +26,21 @@
         <!-- BUSCADOR -->
         <v-col cols="12" md="6">
           <v-text-field
-            v-model="movie"
+            v-model="searchedMovie"
             label="Buscá una peli"
             outlined
             append-icon="mdi-magnify"
-            @click:append="searchMovies"
-            @keyup.enter="searchMovies"
+            @click:append="searchMovie"
+            @keyup.enter="searchMovie"
             dense
             small
-            :rules="[required('peli')]"
             :errorMessages="searchErrors"
-          ></v-text-field>
-        </v-col>
-      </v-row>
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <!--
+        :rules="[required('peli')]"
+      -->
 
       <!-- Menú Registrar usuario/ usuario registrado -->
       <div class="d-flex justify-center">
@@ -59,7 +61,7 @@ export default {
   data() {
     return {
       drawer: false,
-      movie: '',
+      searchedMovie: '',
       items: [
         {
           icon: "mdi-home",
@@ -91,12 +93,11 @@ export default {
     },
   },
   methods: {
-    ...mapMutations('search', ['SET_SEARCH_MOVIE']),
-    searchMovies() {
-      if (this.movie) {
-        console.log("this.movie", this.movie)
-        this.SET_SEARCH_MOVIE(this.movie);
-        console.log("this.movie", this.movie)
+    ...mapMutations('search', ['SET_SEARCH_MOVIE', 'RESET_SEARCH_MOVIE']),
+    searchMovie() {
+      if (this.searchedMovie) {
+        this.RESET_SEARCH_MOVIE()
+        this.SET_SEARCH_MOVIE(this.searchedMovie);
 
         this.$router.push('/filmResult');
       }
